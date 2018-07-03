@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
+  before_action :require_user_logged_in
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks=Task.all.page(params[:page])
+    @tasks=Task.where(user_id: @current_user.id).page(params[:page])
   end
   
   def show
@@ -54,7 +55,7 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    return params.require(:task).permit(:content, :status)
+    return params.require(:task).permit(:content, :status, :user_id)
   end
   
   
