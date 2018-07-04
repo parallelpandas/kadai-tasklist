@@ -20,9 +20,7 @@
         <%= f.label(:status, 'ステータス：') %>
         <%= f.select(:status, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"], ["保留", "保留"]],{}, class: 'form-control')%>
       </div>
-      
-      <%= f.hidden_field(:user_id, value: @current_user.id )%>
-      
+    
       <%= f.submit('投稿', class: 'btn btn-primary' ) %>
     <% end %>
   </div>
